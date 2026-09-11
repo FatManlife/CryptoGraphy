@@ -175,7 +175,7 @@ void decipher(){
 
         while(ABC[j] != 0 ){
             if(ABC[j] == text_input[i]){
-                decypherTxt[i] = ABC[(j-k1)%31];
+                decypherTxt[i] = j-k1 >= 0 ? ABC[(j-k1)%31] : ABC[(j-k1)%31 + 31];
                 break;
             }
 
