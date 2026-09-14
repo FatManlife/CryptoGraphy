@@ -46,7 +46,7 @@ void inputK1(){
         system("clear");
         wprintf(L"Input key1: ");
 
-        if(wscanf(L"%d", &k1) == 1 && k1 != 0 ) {
+        if(wscanf(L"%d", &k1) == 1 && k1 % 31 != 0 ) {
             while ((c = getwchar()) != L'\n' && c != WEOF);
             break;
         }
