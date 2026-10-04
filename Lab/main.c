@@ -5,6 +5,7 @@
 #include<wctype.h>
 #include "utils.h"
 #include "./cezar/menu.h"
+#include "./vigenere/menu.h"
 
 wchar_t choice; 
 const wchar_t *cABC = L"AĂÂBCDEFGHIÎJKLMNOPQRSȘTȚUVWXYZ";
@@ -15,13 +16,16 @@ int main (){
     while (1) {
         system("clear");
 
-        wprintf(L"LAB MENU\n1)Cezar cypher\nEsc)Exit\n\n");
+        wprintf(L"LAB MENU\n1)Cezar cypher\n2)Vigenere cypher\nEsc)Exit\n\n");
 
         iChoice(&choice);
 
         switch(choice){
             case '1':
                 cezar(&choice, cABC);
+                break;
+            case '2':
+                vigenere(&choice, cABC);
                 break;
             case 27: exit(0); 
         }

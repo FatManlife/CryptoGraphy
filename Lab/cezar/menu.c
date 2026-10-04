@@ -4,7 +4,12 @@
 #include "../utils.h"
 
 void cezar(wchar_t *choice, const wchar_t *cABC){
-    initCEAZAR(cABC);
+    wchar_t ABC[100]; 
+    wchar_t text_input[100];
+    int k1;
+    wchar_t k2[100]; 
+
+    initCEAZAR(cABC,k2,&k1,text_input,ABC);
 
     while(1){
         system("clear");
@@ -16,25 +21,25 @@ void cezar(wchar_t *choice, const wchar_t *cABC){
         switch (*choice)
         {
             case '1':
-                inputText(cABC);
+                inputText(cABC, text_input);
                 break;
             case '2':
-                inputK1();
+                inputK1(&k1);
                 break;
             case '3':
-                inputK2(cABC);
+                inputK2(cABC, k2, ABC);
                 break;
             case '4':
-                makeCypher();
+                makeCypher(&k1, text_input, ABC);
                 break;
             case '5':
-                decipher();
+                decipher(&k1, text_input, ABC);
                 break;
             case '6':
-                resetABC(cABC);
+                resetABC(cABC, ABC, k2);
                 break;
             case '7':
-                show();
+                show(text_input, &k1, k2, ABC);
                 break;
             case 27: return;  
         }

@@ -4,19 +4,14 @@
 #include "options.h"
 #include "../validation.h"
 
-wchar_t ABC[100]; 
-wchar_t text_input[100];
-int k1;
-wchar_t k2[100]; 
-
-void initCEAZAR(const wchar_t *cABC){
+void initCEAZAR(const wchar_t *cABC, wchar_t *k2, int *k1, wchar_t *text_input, wchar_t *ABC){
     wcscpy(ABC, cABC);
     k2[0] = '\0';
-    k1 = 0;
+    *k1 = 0;
     text_input[0] = '\0';
 }
 
-void inputText(const wchar_t *cABC){
+void inputText(const wchar_t *cABC, wchar_t *text_input){
     wint_t c;
 
     do {
@@ -39,14 +34,14 @@ void inputText(const wchar_t *cABC){
     } while(1);
 }
 
-void inputK1(){
+void inputK1(int *k1){
     wint_t c;
 
     do {
         system("clear");
         wprintf(L"Input key1: ");
 
-        if(wscanf(L"%d", &k1) == 1 && k1 % 31 != 0 ) {
+        if(wscanf(L"%d", k1) == 1 && *k1 % 31 != 0 ) {
             while ((c = getwchar()) != L'\n' && c != WEOF);
             break;
         }
@@ -59,7 +54,7 @@ void inputK1(){
     } while(1);
 }
 
-void inputK2(const wchar_t *cABC){
+void inputK2(const wchar_t *cABC, wchar_t *k2, wchar_t *ABC){
     wint_t c;
 
     do {
@@ -124,11 +119,11 @@ void inputK2(const wchar_t *cABC){
     getwchar();
 }
 
-void makeCypher(){
+void makeCypher(int *k1 ,wchar_t *text_input, wchar_t *ABC){
     system("clear");
     wchar_t cypher[100];
 
-    if(!k1 || !wcslen(text_input)){
+    if(!*k1 || !wcslen(text_input)){
         wprintf(L"PLEASE PROVIDE AT LEAST K1 AND TEXT!!!");
         getwchar();
         return;
@@ -141,7 +136,7 @@ void makeCypher(){
 
         while(ABC[j] != 0 ){
             if(ABC[j] == text_input[i]){
-                cypher[i] = ABC[(j+k1)%31];
+                cypher[i] = ABC[(j+*k1)%31];
                 break;
             }
 
@@ -158,11 +153,11 @@ void makeCypher(){
     getwchar();  
 }
 
-void decipher(){
+void decipher(int *k1, wchar_t *text_input, wchar_t *ABC){
     system("clear");
     wchar_t decypherTxt[100];
 
-    if(!k1 || !wcslen(text_input)){
+    if(!*k1 || !wcslen(text_input)){
         wprintf(L"PLEASE PROVIDE AT LEAST K1 AND TEXT!!!");
         getwchar();
         return;
@@ -175,7 +170,7 @@ void decipher(){
 
         while(ABC[j] != 0 ){
             if(ABC[j] == text_input[i]){
-                decypherTxt[i] = j-k1 >= 0 ? ABC[(j-k1)%31] : ABC[(j-k1)%31 + 31];
+                decypherTxt[i] = j-*k1 >= 0 ? ABC[(j-*k1)%31] : ABC[(j-*k1)%31 + 31];
                 break;
             }
 
@@ -192,7 +187,7 @@ void decipher(){
     getwchar();  
 }
 
-void resetABC(const wchar_t *cABC){
+void resetABC(const wchar_t *cABC, wchar_t *ABC, wchar_t *k2){
     system("clear");
     wprintf(L"ALPHABET && K2 RESETED SUCCESFULLY!!!");
     wcscpy(ABC, cABC);
@@ -200,11 +195,11 @@ void resetABC(const wchar_t *cABC){
     getwchar();
 }
 
-void show(){
+void show(wchar_t *text_input, int *k1, wchar_t *k2, wchar_t *ABC){
     system("clear");
     wprintf(L"CURRENT CONFIG\n\n");
     wprintf(L"Text: %ls\n", text_input);
-    wprintf(L"K1: %d\n", k1);
+    wprintf(L"K1: %d\n", *k1);
     wprintf(L"K2: %ls\n", k2);
     wprintf(L"Current Alphabet: %ls\n", ABC);
 
