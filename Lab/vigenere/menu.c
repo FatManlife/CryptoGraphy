@@ -9,7 +9,7 @@ void vigenere(wchar_t *choice, const wchar_t *cABC){
     wchar_t cypher[n];
     wchar_t key[n];
 
-    initViginere(message);
+    initViginere(message, cypher, key);
 
     while(1){
         system("clear");

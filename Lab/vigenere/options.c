@@ -4,8 +4,10 @@
 #include <stdio.h>
 #include "../validation.h"
 
-void initViginere(wchar_t *message){
+void initViginere(wchar_t *message, wchar_t *cypher, wchar_t *key){
     message[0] = '\0';
+    cypher[0] = '\0';
+    key[0] = '\0';
 }
 
 void textInputVigenere(const wchar_t *cABC, wchar_t *text, const int n){
