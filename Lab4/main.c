@@ -41,12 +41,9 @@ int main(){
         size_t length = 0;
         int valid = 1;
 
-        printf("Enter exactly 8 printable ASCII characters: ");
+        printf("Enter exactly 8 ASCII characters: ");
 
         while ((ch = getchar()) != '\n' && ch != EOF) {
-            if (ch < 32 || ch > 126)
-                valid = 0;
-
             if (length < k_size)
                 key[length++] = (unsigned char)ch;
             else
@@ -62,7 +59,7 @@ int main(){
         srand((unsigned int)time(NULL));
 
         for (size_t i = 0; i < k_size; i++)
-            key[i] = (unsigned char)(33 + rand() % 94);
+            key[i] = (unsigned char)(rand() % 256);
     }
 
     system("clear");
