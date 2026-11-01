@@ -76,7 +76,9 @@ int main(){
         printf("\n");
     }
 
-    printf("\nOriginal: %s",key);
+    printf("\nOriginal: ");
+    for (size_t i = 0; i < k_size; i++)
+        printf("%c", key[i]);
 
     printf("\nHex k: ");
     for (size_t i = 0; i < k_size; i++)

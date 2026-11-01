@@ -82,6 +82,7 @@ void cypherVigenre(const wchar_t *ABC, wchar_t *message, wchar_t *key, wchar_t *
 
     if(lm == 0 || lk == 0){
         wprintf(L"INTRDOU MAI ÎNTÂNI CHEIA ȘI MESAJUL");
+        getwchar();
         return;
     }
 
@@ -147,6 +148,7 @@ void decypherVigenere(const wchar_t *ABC, wchar_t *message, wchar_t *key, wchar_
 
     if(lc == 0 || lk == 0){
         wprintf(L"INTRDOU MAI ÎNTÂNI CHEIA ȘI CRIPTOGRAMA");
+        getwchar();
         return;
     }
 
